@@ -27,7 +27,7 @@ for i, image_path in enumerate(image_paths):
 
         # Find contours in the image, keeping only the four largest ones.
         contours = cv2.findContours(threshold.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        contours = contours[0] if imutils.is_cv2() else contours[1]
+        contours = contours[1] if imutils.is_cv3() else contours[0]
         contours = sorted(contours, key=cv2.contourArea, reverse=True)[:4]
 
         for contour in contours:

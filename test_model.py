@@ -29,7 +29,7 @@ for image_path in image_paths:
     threshold = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
 
     cnts = cv2.findContours(threshold.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = cnts[0] if imutils.is_cv2() or imutils.is_cv4() else cnts[1]
+    cnts = cnts[1] if imutils.is_cv3() else cnts[0]
     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[:4]
     cnts = contours.sort_contours(cnts)[0]  # Sorts contours from left to right as they appear in the image.
 
